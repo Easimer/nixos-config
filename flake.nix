@@ -8,32 +8,42 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs: let
-    inherit (self) outputs;
-  in {
-    nixosConfigurations = {
-      zen-hyperv = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/zen-hyperv
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-hardware,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+    in
+    {
+      nixosConfigurations = {
+        zen-hyperv = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/zen-hyperv
 
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.easimer = import ./home;
-          }
-        ];
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.easimer = import ./home;
+            }
+          ];
+        };
+      };
+      homeConfigurations = {
+        home = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            ./home
+          ];
+        };
       };
     };
-    homeConfigurations = {
-      home = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home
-        ];
-      };
-    };
-  };
 }

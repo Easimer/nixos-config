@@ -3,6 +3,7 @@
   lib,
   config,
   pkgs,
+  fetchFromGitHub,
   ...
 }:
 {
@@ -23,6 +24,8 @@
       which
       tree
       gnutar
+      pinentry
+      rbw
     ];
 
     sessionVariables = {
@@ -64,6 +67,17 @@
         formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
       }
     ];
+  };
+
+  programs.rbw = {
+    enable = true;
+
+    settings = {
+      email = "easimer@gmail.com";
+      base_url = "https://vault.easimer.net";
+      identity_url = "https://vault.easimer.net/identity";
+      pinentry = pkgs.pinentry;
+    };
   };
 
   systemd.user.startServices = "sd-switch";
