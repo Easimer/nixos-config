@@ -4,16 +4,16 @@
   config,
   pkgs,
   ...
-}: {
-  imports = [
-  ];
+}:
+{
+  imports = [ ];
 
   home = {
     username = "easimer";
     homeDirectory = "/home/easimer";
     packages = with pkgs; [
       nil
-      nixfmt
+      nixfmt-rfc-style
       helix
       unzip
       less
@@ -49,7 +49,7 @@
       theme = "ferra";
       editor = {
         line-number = "absolute";
-        rulers = [80];
+        rulers = [ 80 ];
         end-of-line-diagnostics = "warning";
         inline-diagnostics = {
           cursor-line = "error";
@@ -57,11 +57,13 @@
         };
       };
     };
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-      formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-    }];
+    languages.language = [
+      {
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+      }
+    ];
   };
 
   systemd.user.startServices = "sd-switch";
