@@ -12,6 +12,7 @@
     username = "easimer";
     homeDirectory = "/home/easimer";
     packages = with pkgs; [
+      nil
       helix
       unzip
       less
