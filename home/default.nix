@@ -30,6 +30,10 @@
 
     sessionVariables = {
       EDITOR = "hx";
+      COLORTERM = "truecolor";
+      LANG = "en_US.UTF-8";
+      LC_CTYPE = "en_US.UTF-8";
+      LC_ALL = "en_US.UTF-8";
     };
   };
 
@@ -38,12 +42,40 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
+
+    shellAliases = {
+      ga = "git add";
+      gc = "git commit";
+      gs = "git status";
+      gdiff = "git diff";
+      gp = "git push";
+      gco = "git checkout";
+      gamen = "git commit --amen";
+      gg = "git grep";
+    };
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
 
   programs.git = {
     enable = true;
     userName = "Daniel Meszaros";
     userEmail = "daniel.meszaros@r34dy.io";
+    extraConfig = {
+      credential.helper = "store";
+      branch.sort = "-commiterdate";
+      column.ui = "auto";
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = "true";
+        renames = "true";
+      };
+    };
   };
 
   programs.helix = {
