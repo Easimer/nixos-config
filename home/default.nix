@@ -9,6 +9,10 @@
 {
   imports = [ ];
 
+  nixpkgs.overlays = [
+    inputs.helix-editor.overlays.default
+  ];
+
   home = {
     username = "easimer";
     homeDirectory = "/home/easimer";
@@ -26,6 +30,7 @@
       gnutar
       pinentry
       rbw
+      tmux
     ];
 
     sessionVariables = {
@@ -89,6 +94,10 @@
         inline-diagnostics = {
           cursor-line = "error";
           other-lines = "error";
+        };
+        backup = {
+          kind = "auto";
+          directories = [ "/tmp/" ];
         };
       };
     };

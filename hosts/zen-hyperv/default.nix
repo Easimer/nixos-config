@@ -8,13 +8,20 @@
   imports = [
     ./hardware-configuration.nix
   ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.kernelModules = ["hv_vmbus" "hv_storvsc"];
-  boot.kernelParams = ["video=hyperv_fb:800x600"];
+  boot.initrd.kernelModules = [
+    "hv_vmbus"
+    "hv_storvsc"
+  ];
+  boot.kernelParams = [ "video=hyperv_fb:800x600" ];
   boot.kernel.sysctl."vm.overcommit_memory" = "1";
 
   networking.hostName = "zen-hyperv"; # Define your hostname.
@@ -73,10 +80,13 @@
   users.users.easimer = {
     isNormalUser = true;
     description = "easimer";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -118,7 +128,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
