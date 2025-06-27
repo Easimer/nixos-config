@@ -24,6 +24,15 @@
     }@inputs:
     let
       inherit (self) outputs;
+      add-home = {
+        imports = [ home-manager.nixosModules.home-manager ];
+        config = {
+          home-manager.useGlobalPkgs = false;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs outputs; };
+          home-manager.users.easimer = import ./home;
+        };
+      };
     in
     {
       nixosConfigurations = {
@@ -32,23 +41,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/zen-hyperv
-
-            vscode-server.nixosModules.default
-            (
-              { config, pkgs, ... }:
-              {
-
-                services.vscode-server.enable = true;
-              }
-            )
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = false;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs outputs; };
-              home-manager.users.easimer = import ./home;
-            }
+            add-home
           ];
         };
         hell-hyperv = nixpkgs.lib.nixosSystem {
@@ -56,23 +49,7 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/hell-hyperv
-
-            vscode-server.nixosModules.default
-            (
-              { config, pkgs, ... }:
-              {
-
-                services.vscode-server.enable = true;
-              }
-            )
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = false;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs outputs; };
-              home-manager.users.easimer = import ./home;
-            }
+            add-home
           ];
         };
       };
