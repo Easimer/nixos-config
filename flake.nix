@@ -51,6 +51,30 @@
             }
           ];
         };
+        hell-hyperv = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/hell-hyperv
+
+            vscode-server.nixosModules.default
+            (
+              { config, pkgs, ... }:
+              {
+
+                services.vscode-server.enable = true;
+              }
+            )
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = false;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs outputs; };
+              home-manager.users.easimer = import ./home;
+            }
+          ];
+        };
       };
       homeConfigurations = {
         home = home-manager.lib.homeManagerConfiguration {
