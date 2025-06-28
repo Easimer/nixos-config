@@ -31,6 +31,7 @@
       pinentry
       rbw
       tmux
+      gitui
     ];
 
     sessionVariables = {
