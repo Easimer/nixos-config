@@ -32,6 +32,8 @@
       rbw
       tmux
       gitui
+      nginx
+      mkcert
     ];
 
     sessionVariables = {
