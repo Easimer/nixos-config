@@ -52,6 +52,15 @@
             add-home
           ];
         };
+        blin = nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs outputs; };
+            system = "x86_64-linux";
+            modules = [
+              nixos-hardware.nixosModules.lenovo-thinkpad-t440s
+              ./hosts/blin
+              add-home
+            ];
+        };
       };
       homeConfigurations = {
         home = home-manager.lib.homeManagerConfiguration {
