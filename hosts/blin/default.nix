@@ -95,6 +95,7 @@
       kdePackages.kclock
       qbittorrent
       sarasa-gothic
+      mpv
     ];
   };
 
