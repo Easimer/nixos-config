@@ -93,7 +93,8 @@
       kdePackages.kate
       ghostty
       kdePackages.kclock
-      #  thunderbird
+      qbittorrent
+      sarasa-gothic
     ];
   };
 
@@ -129,7 +130,6 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    qbittorrent
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
