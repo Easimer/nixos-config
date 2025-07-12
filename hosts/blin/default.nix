@@ -89,6 +89,7 @@
     packages = with pkgs; [
       kdePackages.kate
       ghostty
+      kdePackages.kclock
       #  thunderbird
     ];
   };
