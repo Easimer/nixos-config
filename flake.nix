@@ -10,6 +10,10 @@
 
     helix-editor.url = "github:easimer/helix?ref=edb9ffcf";
     helix-editor.inputs.nixpkgs.follows = "nixpkgs";
+    pomodoro = {
+      url = "git+https://git.easimer.net/easimer/pomodoro.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -53,13 +57,13 @@
           ];
         };
         blin = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs outputs; };
-            system = "x86_64-linux";
-            modules = [
-              nixos-hardware.nixosModules.lenovo-thinkpad-t440s
-              ./hosts/blin
-              add-home
-            ];
+          specialArgs = { inherit inputs outputs; };
+          system = "x86_64-linux";
+          modules = [
+            nixos-hardware.nixosModules.lenovo-thinkpad-t440s
+            ./hosts/blin
+            add-home
+          ];
         };
       };
       homeConfigurations = {

@@ -34,6 +34,7 @@
       gitui
       nginx
       mkcert
+      inputs.pomodoro.packages.${system}.app
     ];
 
     sessionVariables = {
