@@ -44,6 +44,12 @@
       LC_CTYPE = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
     };
+
+    file = {
+      "${config.home.homeDirectory}/.tmux.conf" = {
+        source = ./tmux.conf;
+      };
+    };
   };
 
   programs.home-manager.enable = true;
