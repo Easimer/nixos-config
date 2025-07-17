@@ -192,11 +192,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752767717,
-        "narHash": "sha256-7jrD+dFfJ+5esSy81hVdrCigPeuPEzLsqW86btFDtSo=",
+        "lastModified": 1752784586,
+        "narHash": "sha256-/j2lzQlewHkCuFAImDSpgtpmYQih1fIre++Ewy5Mot0=",
         "ref": "refs/heads/master",
-        "rev": "3e8f386d533a8947a58a84f42683ebbcc6e49136",
-        "revCount": 3,
+        "rev": "675b6ab66a6fd69f678664ef960d49df67c5d065",
+        "revCount": 5,
         "type": "git",
         "url": "https://git.easimer.net/easimer/pomodoro.git"
       },
