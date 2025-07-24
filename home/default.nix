@@ -34,6 +34,7 @@
       gitui
       nginx
       mkcert
+      jujutsu
       inputs.pomodoro.packages.${system}.app
     ];
 
@@ -67,6 +68,11 @@
       gco = "git checkout";
       gamen = "git commit --amen";
       gg = "git grep";
+      jjpb = "jj git push --allow-new -b";
+      jjbs = "jj bookmark set";
+      jjn = "jj new";
+      jjd = "jj describe";
+      jjs = "jj show";
     };
   };
 
