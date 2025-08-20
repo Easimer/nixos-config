@@ -13,6 +13,11 @@
     inputs.helix-editor.overlays.default
   ];
 
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   home = {
     username = "easimer";
     homeDirectory = "/home/easimer";
