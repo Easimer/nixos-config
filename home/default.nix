@@ -136,7 +136,7 @@
         }
         {
           name = "cpp";
-          auto-format = true;
+          auto-format = false;
         }
       ];
     };
