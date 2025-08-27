@@ -117,13 +117,24 @@
         };
       };
     };
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
-      }
-    ];
+    languages = {
+      language-server.clangd = {
+        command = "clangd";
+        args = [ "--compile-commands-dir=./out" ];
+      };
+
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+        }
+        {
+          name = "cpp";
+          auto-format = true;
+        }
+      ];
+    };
   };
 
   programs.rbw = {
