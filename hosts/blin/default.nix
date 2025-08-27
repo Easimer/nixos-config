@@ -137,6 +137,35 @@
     enable = true;
   };
 
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+    ];
+
+    fcitx5.settings.inputMethod = {
+      "Groups/0" = {
+        Name = "Default";
+        "Default Layout" = "us";
+        DefaultIM = "mozc";
+      };
+      "Groups/0/Items/0".Name = "keyboard-us";
+      "Groups/0/Items/1".Name = "mozc";
+
+      "Groups/1" = {
+        Name = "Hu";
+        "Default Layout" = "hu";
+        DefaultIM = "";
+      };
+
+      GroupOrder."0" = "Default";
+      GroupOrder."1" = "Hu";
+    };
+
+    fcitx5.waylandFrontend = true;
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
