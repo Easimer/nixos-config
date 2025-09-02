@@ -42,6 +42,9 @@
       jujutsu
       inputs.pomodoro.packages.${system}.app
       lombok
+      docker
+      kubectl
+      kubetui
     ];
 
     sessionVariables = {
