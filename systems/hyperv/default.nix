@@ -24,7 +24,7 @@
   time.timeZone = "Europe/Budapest";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.xserver.enable = false;
+  # services.xserver.enable = false;
 
   users.users.easimer = {
     isNormalUser = true;
