@@ -41,6 +41,7 @@
       mkcert
       jujutsu
       inputs.pomodoro.packages.${system}.app
+      lombok
     ];
 
     sessionVariables = {
@@ -65,6 +66,7 @@
     enableCompletion = true;
 
     shellAliases = {
+      garbage = "nix-collect-garbage --delete-older-than 14d";
       ga = "git add";
       gc = "git commit";
       gs = "git status";
@@ -127,6 +129,18 @@
         command = "clangd";
         args = [ "--compile-commands-dir=./out" ];
       };
+
+      language-server.jdtls =
+        let
+          lombok = "${pkgs.lombok}/share/java/lombok.jar";
+        in
+        {
+          command = "jdtls";
+          args = [
+            "--jvm-arg=-javaagent:${lombok}"
+            "--jvm-arg=-Xbootclasspath/a:${lombok}"
+          ];
+        };
 
       language = [
         {
