@@ -16,7 +16,12 @@
     "hv_vmbus"
     "hv_storvsc"
   ];
-  boot.kernelParams = [ "video=hyperv_fb:800x600" ];
+  boot.kernelParams = [
+    "video=hyperv_fb:800x600"
+    # These will break in systemd v258
+    "SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1"
+    "systemd.unified_cgroup_hierarchy=0"
+  ];
   boot.kernel.sysctl."vm.overcommit_memory" = "1";
 
   networking.networkmanager.enable = true;
@@ -32,6 +37,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
   };
 
@@ -53,6 +59,10 @@
   networking.firewall.enable = false;
 
   services.getty.helpLine = "IPv4 address: \\4";
+
+  virtualisation.docker = {
+    enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
