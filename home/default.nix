@@ -9,10 +9,6 @@
 {
   imports = [ ];
 
-  nixpkgs.overlays = [
-    inputs.helix-editor.overlays.default
-  ];
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -41,10 +37,10 @@
       mkcert
       jujutsu
       inputs.pomodoro.packages.${system}.app
-      lombok
+      #lombok
       docker
-      kubectl
-      kubetui
+      #kubectl
+      #kubetui
     ];
 
     sessionVariables = {
@@ -121,10 +117,10 @@
           cursor-line = "error";
           other-lines = "error";
         };
-        backup = {
-          kind = "auto";
-          directories = [ "/tmp/" ];
-        };
+        # backup = {
+        #   kind = "auto";
+        #   directories = [ "/tmp/" ];
+        # };
       };
     };
     languages = {
@@ -133,17 +129,23 @@
         args = [ "--compile-commands-dir=./out" ];
       };
 
-      language-server.jdtls =
-        let
-          lombok = "${pkgs.lombok}/share/java/lombok.jar";
-        in
-        {
-          command = "jdtls";
-          args = [
-            "--jvm-arg=-javaagent:${lombok}"
-            "--jvm-arg=-Xbootclasspath/a:${lombok}"
-          ];
-        };
+      #language-server.jdtls =
+      #  let
+      #    lombok = "${pkgs.lombok}/share/java/lombok.jar";
+      #  in
+      #  {
+      #    command = "jdtls";
+      #    args = [
+      #      "--jvm-arg=-javaagent:${lombok}"
+      #      "--jvm-arg=-Xbootclasspath/a:${lombok}"
+      #    ];
+      #  };
+
+      language-server.basedpyright = {
+        command = "basedpyright-langserver";
+        args = [ "--stdio" ];
+        config = { };
+      };
 
       language = [
         {
@@ -154,6 +156,13 @@
         {
           name = "cpp";
           auto-format = false;
+        }
+        {
+          name = "python";
+          language-servers = [
+            "basedpyright"
+            "ruff"
+          ];
         }
       ];
     };
