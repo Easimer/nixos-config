@@ -14,6 +14,10 @@
 
   networking = {
     hostName = "zen-hyperv";
+
+    wireguard = (import ../../utils/wireguard.nix) {
+      ip = "10.242.0.2/32";
+    };
   };
 
   services.openvpn.servers = {

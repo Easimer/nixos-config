@@ -14,7 +14,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "blin"; # Define your hostname.
+  networking = {
+    hostName = "blin";
+
+    wireguard = (import ../../utils/wireguard.nix) {
+      ip = "10.242.0.3/32";
+    };
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
