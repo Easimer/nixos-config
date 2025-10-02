@@ -4,6 +4,7 @@
     ../../systems/hyperv
     ./hardware-configuration.nix
     ../../utils/vscode-server
+    ../../utils/i3.nix
   ];
 
   networking.hostName = "hell-hyperv";
@@ -22,27 +23,6 @@
       "wheel"
     ];
     packages = with pkgs; [
-      alacritty
     ];
-  };
-
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-      ];
-    };
-  };
-  services.xrdp = {
-    enable = true;
-    defaultWindowManager = "${pkgs.i3}/bin/i3";
-    openFirewall = true;
   };
 }
