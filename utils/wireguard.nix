@@ -15,6 +15,7 @@
         allowedIPs = [
           "10.242.0.0/24"
         ];
+        persistentKeepalive = 25;
       }
     ];
   };
