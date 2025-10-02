@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../../systems/hyperv
@@ -31,12 +36,17 @@
 
   services.xserver = {
     enable = true;
+    displayManager = {
+      lightdm.enable = false;
+      sddm.enable = false;
+    };
     desktopManager = {
       xterm.enable = false;
     };
 
     windowManager.i3 = {
       enable = true;
+      package = pkgs.i3;
       extraPackages = with pkgs; [
         dmenu
         i3status

@@ -55,6 +55,9 @@
       "${config.home.homeDirectory}/.tmux.conf" = {
         source = ./tmux.conf;
       };
+      "${config.home.homeDirectory}/.config/i3/config" = {
+        source = ./i3/config;
+      };
     };
   };
 
@@ -94,11 +97,11 @@
     userEmail = "daniel.meszaros@r34dy.io";
     extraConfig = {
       credential.helper = "store";
-      branch.sort = "-commiterdate";
       column.ui = "auto";
       diff = {
         algorithm = "histogram";
-        colorMoved = "plain";
+        colorMoved = "default";
+        colorMovedWs = "allow-indentation-change";
         mnemonicPrefix = "true";
         renames = "true";
       };
