@@ -119,10 +119,23 @@
       editor = {
         line-number = "absolute";
         rulers = [ 80 ];
+        auto-pairs = false;
         end-of-line-diagnostics = "warning";
         inline-diagnostics = {
           cursor-line = "error";
           other-lines = "error";
+        };
+        statusline = {
+          left = [
+            "mode"
+            "spinner"
+            "file-name"
+            "separator"
+            "version-control"
+          ];
+        };
+        lsp = {
+          display-inlay-hints = true;
         };
         # backup = {
         #   kind = "auto";
