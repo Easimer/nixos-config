@@ -65,6 +65,15 @@
             add-home
           ];
         };
+        frost = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          system = "x86_64-linux";
+          modules = [
+            nixos-hardware.nixosModules.lenovo-thinkpad-t14
+            ./hosts/frost
+            add-home
+          ];
+        };
       };
       homeConfigurations = {
         home = home-manager.lib.homeManagerConfiguration {
