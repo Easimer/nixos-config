@@ -102,6 +102,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "dialout"
     ];
     packages = with pkgs; [
       kdePackages.kate
@@ -109,7 +110,20 @@
       kdePackages.kclock
       qbittorrent
       mpv
+      teams-for-linux
+      # Install J-Link just for the udev rules. The real j-link dlls will be
+      # installed under the zephyr workspace
+      (pkgs.segger-jlink.override {
+        headless = true;
+      })
+      nrfconnect
+      nrfconnect-bluetooth-low-energy
+      nrf-udev
     ];
+  };
+
+  programs.steam = {
+    enable = true;
   };
 
   # Install firefox.
@@ -138,6 +152,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # Accept the license of J-Link
+  nixpkgs.config.segger-jlink.acceptLicense = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

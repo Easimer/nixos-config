@@ -24,6 +24,10 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "i915.force_probe=!4626"
+    "xe.force_probe=4626"
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5a28163c-22c1-4122-80f3-695207db479e";
