@@ -119,6 +119,11 @@
       nrfconnect
       nrfconnect-bluetooth-low-energy
       nrf-udev
+
+      gdb
+      gf
+      valgrind
+      renderdoc
     ];
   };
 

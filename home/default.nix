@@ -60,6 +60,9 @@
       "${config.home.homeDirectory}/.config/i3/config" = {
         source = ./i3/config;
       };
+      "${config.home.homeDirectory}/.gdbinit" = {
+        source = ./gdbinit;
+      };
     };
   };
 
