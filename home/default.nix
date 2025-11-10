@@ -135,9 +135,6 @@
             "version-control"
           ];
         };
-        lsp = {
-          display-inlay-hints = true;
-        };
         # backup = {
         #   kind = "auto";
         #   directories = [ "/tmp/" ];
