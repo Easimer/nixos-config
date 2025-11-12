@@ -63,6 +63,9 @@
       "${config.home.homeDirectory}/.gdbinit" = {
         source = ./gdbinit;
       };
+      "${config.home.homeDirectory}/.config/ghostty/config" = {
+        source = ./ghostty;
+      };
     };
   };
 

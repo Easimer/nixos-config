@@ -107,23 +107,21 @@
     packages = with pkgs; [
       kdePackages.kate
       ghostty
+      iosevka
       kdePackages.kclock
       qbittorrent
       mpv
       teams-for-linux
-      # Install J-Link just for the udev rules. The real j-link dlls will be
-      # installed under the zephyr workspace
-      (pkgs.segger-jlink.override {
-        headless = true;
-      })
       nrfconnect
       nrfconnect-bluetooth-low-energy
-      nrf-udev
+      wireshark
 
       gdb
       gf
       valgrind
       renderdoc
+
+      ungoogled-chromium
     ];
   };
 
@@ -167,6 +165,15 @@
     wget
     pciutils
     usbutils
+  ];
+
+  services.udev.packages = with pkgs; [
+    nrf-udev
+    # Install J-Link just for the udev rules. The real j-link dlls will be
+    # installed under the zephyr workspace
+    (pkgs.segger-jlink.override {
+      headless = true;
+    })
   ];
 
   services.openssh = {
