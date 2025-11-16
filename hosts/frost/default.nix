@@ -110,6 +110,7 @@
       iosevka
       kdePackages.kclock
       qbittorrent
+      libreoffice
       mpv
       teams-for-linux
       nrfconnect
