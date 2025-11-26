@@ -29,6 +29,8 @@
     "xe.force_probe=4626"
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_testing;
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5a28163c-22c1-4122-80f3-695207db479e";
     fsType = "btrfs";
