@@ -180,15 +180,12 @@
       };
       "Groups/0/Items/0".Name = "keyboard-us";
       "Groups/0/Items/1".Name = "mozc";
-
-      "Groups/1" = {
-        Name = "Hu";
-        "Default Layout" = "hu";
-        DefaultIM = "";
+      "Groups/0/Items/2" = {
+        Name = "keyboard-hu";
+        Layout = "";
       };
 
       GroupOrder."0" = "Default";
-      GroupOrder."1" = "Hu";
     };
 
     fcitx5.waylandFrontend = true;
