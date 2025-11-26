@@ -17,9 +17,9 @@
   networking = {
     hostName = "frost";
 
-    #wireguard = (import ../../utils/wireguard.nix) {
-    #  ip = "10.242.0.3/32";
-    #};
+    wireguard = (import ../../utils/wireguard.nix) {
+      ip = "10.242.0.5/32";
+    };
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -221,6 +221,18 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  networking.firewall = {
+    interfaces = {
+      wg0 = {
+        allowedTCPPorts = [
+          22
+          80
+          443
+        ];
+      };
+    };
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
