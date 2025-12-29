@@ -25,11 +25,13 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
+    # "module_blacklist=i915"
     "i915.force_probe=!4626"
+    # "i915.enable_psr=0"
     "xe.force_probe=4626"
+    # "xe.enable_psr=0"
+    # "intel_iommu=igfx_off"
   ];
-
-  boot.kernelPackages = pkgs.linuxPackages_testing;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5a28163c-22c1-4122-80f3-695207db479e";

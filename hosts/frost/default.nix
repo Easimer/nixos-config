@@ -103,12 +103,14 @@
       "networkmanager"
       "wheel"
       "dialout"
+      "libvirtd"
     ];
     packages = with pkgs; [
       kdePackages.kate
       ghostty
-      iosevka
+      sarasa-gothic
       kdePackages.kclock
+      kdePackages.krdc
       qbittorrent
       libreoffice
       mpv
@@ -124,6 +126,15 @@
 
       ungoogled-chromium
     ];
+  };
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.ovmf.enable = true;
+  };
+
+  programs.virt-manager = {
+    enable = true;
   };
 
   programs.steam = {
