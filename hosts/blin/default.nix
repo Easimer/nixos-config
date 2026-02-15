@@ -102,6 +102,9 @@
       qbittorrent
       sarasa-gothic
       mpv
+      wireshark
+
+      ungoogled-chromium
     ];
   };
 
@@ -137,6 +140,8 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
+    pciutils
+    usbutils
   ];
 
   services.openssh = {
