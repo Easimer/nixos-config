@@ -102,7 +102,7 @@
   programs.git = {
     enable = true;
     userName = "Daniel Meszaros";
-    userEmail = "daniel.meszaros@r34dy.io";
+    userEmail = "easimer@gmail.com";
     extraConfig = {
       credential.helper = "store";
       column.ui = "auto";

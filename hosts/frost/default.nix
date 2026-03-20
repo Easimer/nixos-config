@@ -125,6 +125,12 @@
       renderdoc
 
       ungoogled-chromium
+
+      hunspell
+      hunspellDicts.en_US-large
+      hunspellDicts.hu_HU
+
+      kicad
     ];
   };
 
@@ -180,6 +186,11 @@
       headless = true;
     })
   ];
+
+  # services.udev.extraRules = ''
+  #   # Disauthorize the built-in BT adapter
+  #   SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0033", ATTR{authorized}="0"
+  # '';
 
   services.openssh = {
     enable = true;
