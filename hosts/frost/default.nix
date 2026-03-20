@@ -106,37 +106,22 @@
       "libvirtd"
     ];
     packages = with pkgs; [
-      kdePackages.kate
-      ghostty
-      sarasa-gothic
-      kdePackages.kclock
-      kdePackages.krdc
-      qbittorrent
-      libreoffice
-      mpv
-      teams-for-linux
       nrfconnect
       nrfconnect-bluetooth-low-energy
-      wireshark
+      kicad
 
-      gdb
-      gf
-      valgrind
+      teams-for-linux
+
+      wireshark
       renderdoc
 
-      ungoogled-chromium
-
-      hunspell
-      hunspellDicts.en_US-large
       hunspellDicts.hu_HU
-
-      kicad
     ];
   };
 
   virtualisation.libvirtd = {
     enable = true;
-    qemu.ovmf.enable = true;
+    # qemu.ovmf.enable = true;
   };
 
   programs.virt-manager = {
@@ -176,6 +161,24 @@
     wget
     pciutils
     usbutils
+    gdb
+    gf
+    valgrind
+
+    kdePackages.kate
+    kdePackages.kclock
+    kdePackages.krdc
+    ghostty
+    qbittorrent
+    mpv
+
+    libreoffice
+    hunspell
+    hunspellDicts.en_US-large
+
+    ungoogled-chromium
+
+    sarasa-gothic
   ];
 
   services.udev.packages = with pkgs; [

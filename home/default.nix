@@ -31,18 +31,14 @@
       which
       tree
       gnutar
-      pinentry
+      pinentry-curses
       rbw
       tmux
       gitui
       nginx
       mkcert
-      jujutsu
-      inputs.pomodoro.packages.${system}.app
-      #lombok
+      inputs.pomodoro.packages.${stdenv.hostPlatform.system}.app
       docker
-      #kubectl
-      #kubetui
     ];
 
     sessionVariables = {
@@ -101,9 +97,11 @@
 
   programs.git = {
     enable = true;
-    userName = "Daniel Meszaros";
-    userEmail = "easimer@gmail.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Daniel Meszaros";
+        email = "easimer@gmail.com";
+      };
       credential.helper = "store";
       column.ui = "auto";
       diff = {
@@ -138,10 +136,6 @@
             "version-control"
           ];
         };
-        # backup = {
-        #   kind = "auto";
-        #   directories = [ "/tmp/" ];
-        # };
       };
     };
     languages = {
@@ -149,18 +143,6 @@
         command = "clangd";
         args = [ "--compile-commands-dir=./out" ];
       };
-
-      #language-server.jdtls =
-      #  let
-      #    lombok = "${pkgs.lombok}/share/java/lombok.jar";
-      #  in
-      #  {
-      #    command = "jdtls";
-      #    args = [
-      #      "--jvm-arg=-javaagent:${lombok}"
-      #      "--jvm-arg=-Xbootclasspath/a:${lombok}"
-      #    ];
-      #  };
 
       language-server.basedpyright = {
         command = "basedpyright-langserver";
@@ -196,7 +178,7 @@
       email = "easimer@gmail.com";
       base_url = "https://vault.easimer.net";
       identity_url = "https://vault.easimer.net/identity";
-      pinentry = pkgs.pinentry;
+      pinentry = pkgs.pinentry-curses;
     };
   };
 

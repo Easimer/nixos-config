@@ -2,8 +2,8 @@
   description = "";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
@@ -42,7 +42,6 @@
       nixosConfigurations = {
         zen-hyperv = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          system = "x86_64-linux";
           modules = [
             ./hosts/zen-hyperv
             add-home
@@ -50,7 +49,6 @@
         };
         hell-hyperv = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          system = "x86_64-linux";
           modules = [
             ./hosts/hell-hyperv
             add-home
@@ -58,7 +56,6 @@
         };
         blin = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          system = "x86_64-linux";
           modules = [
             nixos-hardware.nixosModules.lenovo-thinkpad-t440s
             ./hosts/blin
@@ -67,7 +64,6 @@
         };
         frost = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          system = "x86_64-linux";
           modules = [
             nixos-hardware.nixosModules.lenovo-thinkpad-t14
             ./hosts/frost
