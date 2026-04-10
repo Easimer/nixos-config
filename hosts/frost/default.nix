@@ -2,8 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
+{
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+  kicad-unstable = pkgs-unstable.kicad;
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -108,7 +115,11 @@
     packages = with pkgs; [
       nrfconnect
       nrfconnect-bluetooth-low-energy
-      kicad
+      # NixOS packages KiCAD with compressed 3D models, while other platform
+      # do not. Disable compression for interopability.
+      (kicad-unstable.override {
+        compressStep = false;
+      })
 
       teams-for-linux
 

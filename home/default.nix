@@ -39,6 +39,12 @@
       mkcert
       inputs.pomodoro.packages.${stdenv.hostPlatform.system}.app
       docker
+      tio
+      file
+      gnumake
+      ninja
+      wget
+      xz
     ];
 
     sessionVariables = {

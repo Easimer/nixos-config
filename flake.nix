@@ -3,13 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
-    helix-editor.url = "github:easimer/helix?ref=edb9ffcf";
-    helix-editor.inputs.nixpkgs.follows = "nixpkgs";
     pomodoro = {
       url = "git+https://git.easimer.net/easimer/pomodoro.git";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,10 +19,10 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       nixos-hardware,
       home-manager,
       vscode-server,
-      helix-editor,
       ...
     }@inputs:
     let
