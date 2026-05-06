@@ -41,3 +41,9 @@ font-family = Sarasa Term Slab J
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
+
+font-family = Sarasa Term Slab J
+cursor-style = block
+background-opacity = 0.90
+maximize = true
+
