@@ -179,9 +179,11 @@ in
     kdePackages.kate
     kdePackages.kclock
     kdePackages.krdc
+    kdePackages.kamoso
     ghostty
     qbittorrent
     mpv
+    blender
 
     libreoffice
     hunspell
