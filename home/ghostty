@@ -44,6 +44,7 @@ font-family = Sarasa Term Slab J
 
 font-family = Sarasa Term Slab J
 cursor-style = block
-background-opacity = 0.90
+background-opacity = 0.80
+background-opacity-cells = true
 maximize = true
 
