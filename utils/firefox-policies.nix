@@ -39,5 +39,17 @@
       private_browsing = true;
       default_area = "navbar";
     };
+    "{6b733b82-9261-47ee-a595-2dda294a4d08}" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/yomitan/latest.xpi";
+      installation_mode = "force_installed";
+      private_browsing = true;
+      default_area = "menupanel";
+    };
+    "{3f1aff6b-0363-410f-b81b-9a286ffb4b10}" = {
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/have-a-fox-dream/latest.xpi";
+      installation_mode = "force_installed";
+      private_browsing = true;
+      default_area = "menupanel";
+    };
   };
 }
