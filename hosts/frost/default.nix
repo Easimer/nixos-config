@@ -267,6 +267,11 @@ in
   # networking.firewall.enable = false;
 
   networking.firewall = {
+    allowedTCPPorts = [
+      22
+      3389 # RDP
+    ];
+
     interfaces = {
       wg0 = {
         allowedTCPPorts = [
