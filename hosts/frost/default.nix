@@ -102,6 +102,8 @@ in
 
   services.xserver.videoDrivers = [ "modesetting" ];
 
+  users.groups.plugdev = { };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.easimer = {
     isNormalUser = true;
@@ -111,6 +113,7 @@ in
       "wheel"
       "dialout"
       "libvirtd"
+      "plugdev"
     ];
     packages = with pkgs; [
       nrfconnect
@@ -175,6 +178,7 @@ in
     gdb
     gf
     valgrind
+    picotool
 
     kdePackages.kate
     kdePackages.kclock
@@ -203,10 +207,36 @@ in
     })
   ];
 
-  # services.udev.extraRules = ''
-  #   # Disauthorize the built-in BT adapter
-  #   SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0033", ATTR{authorized}="0"
-  # '';
+  services.udev.extraRules = ''
+    # Disauthorize the built-in BT adapter
+    # SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0033", ATTR{authorized}="0"
+
+    # Pico
+    SUBSYSTEM=="usb", \
+      ATTRS{idVendor}=="2e8a", \
+      ATTRS{idProduct}=="0003", \
+      TAG+="uaccess", \
+      MODE="660", \
+      GROUP="plugdev"
+    SUBSYSTEM=="usb", \
+      ATTRS{idVendor}=="2e8a", \
+      ATTRS{idProduct}=="0009", \
+      TAG+="uaccess", \
+      MODE="660", \
+      GROUP="plugdev"
+    SUBSYSTEM=="usb", \
+      ATTRS{idVendor}=="2e8a", \
+      ATTRS{idProduct}=="000a", \
+      TAG+="uaccess", \
+      MODE="660", \
+      GROUP="plugdev"
+    SUBSYSTEM=="usb", \
+      ATTRS{idVendor}=="2e8a", \
+      ATTRS{idProduct}=="000f", \
+      TAG+="uaccess", \
+      MODE="660", \
+      GROUP="plugdev"
+  '';
 
   services.openssh = {
     enable = true;
