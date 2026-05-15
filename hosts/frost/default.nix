@@ -123,6 +123,7 @@ in
       (kicad-unstable.override {
         compressStep = false;
       })
+      freecad
 
       teams-for-linux
 
