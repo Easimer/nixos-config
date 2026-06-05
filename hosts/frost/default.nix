@@ -4,13 +4,8 @@
 
 {
   pkgs,
-  inputs,
   ...
 }:
-let
-  pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
-  kicad-unstable = pkgs-unstable.kicad;
-in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -120,10 +115,11 @@ in
       nrfconnect-bluetooth-low-energy
       # NixOS packages KiCAD with compressed 3D models, while other platform
       # do not. Disable compression for interopability.
-      (kicad-unstable.override {
+      (kicad.override {
         compressStep = false;
       })
       freecad
+      orca-slicer
 
       teams-for-linux
 

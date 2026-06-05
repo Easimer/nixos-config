@@ -9,6 +9,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
+    nixpkgs-26-05.url = "github:NixOS/nixpkgs/nixos-26.05";
+    home-manager-26-05.url = "github:nix-community/home-manager/release-26.05";
+    home-manager-26-05.inputs.nixpkgs.follows = "nixpkgs-26-05";
+
     pomodoro = {
       url = "git+https://git.easimer.net/easimer/pomodoro.git";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,12 +27,23 @@
       nixos-hardware,
       home-manager,
       vscode-server,
+      nixpkgs-26-05,
+      home-manager-26-05,
       ...
     }@inputs:
     let
       inherit (self) outputs;
       add-home = {
         imports = [ home-manager.nixosModules.home-manager ];
+        config = {
+          home-manager.useGlobalPkgs = false;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs outputs; };
+          home-manager.users.easimer = import ./home;
+        };
+      };
+      add-home-26-05 = {
+        imports = [ home-manager-26-05.nixosModules.home-manager ];
         config = {
           home-manager.useGlobalPkgs = false;
           home-manager.useUserPackages = true;
@@ -61,12 +76,12 @@
             add-home
           ];
         };
-        frost = nixpkgs.lib.nixosSystem {
+        frost = nixpkgs-26-05.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
             nixos-hardware.nixosModules.lenovo-thinkpad-t14
             ./hosts/frost
-            add-home
+            add-home-26-05
           ];
         };
       };

@@ -21,7 +21,7 @@
     homeDirectory = "/home/easimer";
     packages = with pkgs; [
       nil
-      nixfmt-rfc-style
+      nixfmt
       helix
       unzip
       less
