@@ -45,6 +45,7 @@
       ninja
       wget
       xz
+      jq
     ];
 
     sessionVariables = {
