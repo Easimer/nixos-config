@@ -161,7 +161,7 @@
         {
           name = "nix";
           auto-format = true;
-          formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+          formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
         }
         {
           name = "cpp";
