@@ -206,7 +206,7 @@
 
   services.udev.extraRules = ''
     # Disauthorize the built-in BT adapter
-    # SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0033", ATTR{authorized}="0"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="8087", ATTRS{idProduct}=="0033", ATTR{authorized}="0"
 
     # Pico
     SUBSYSTEM=="usb", \
