@@ -4,6 +4,7 @@
 
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -193,6 +194,9 @@
     ungoogled-chromium
 
     sarasa-gothic
+
+    gimp
+    darktable
   ];
 
   services.udev.packages = with pkgs; [
