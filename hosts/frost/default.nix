@@ -114,11 +114,7 @@
     packages = with pkgs; [
       nrfconnect
       nrfconnect-bluetooth-low-energy
-      # NixOS packages KiCAD with compressed 3D models, while other platform
-      # do not. Disable compression for interopability.
-      (kicad.override {
-        compressStep = false;
-      })
+      kicad
       freecad
       prusa-slicer
       orca-slicer
