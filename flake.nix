@@ -13,10 +13,10 @@
     home-manager-26-05.url = "github:nix-community/home-manager/release-26.05";
     home-manager-26-05.inputs.nixpkgs.follows = "nixpkgs-26-05";
 
-    pomodoro = {
-      url = "git+https://git.easimer.net/easimer/pomodoro.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # pomodoro = {
+    #   url = "git+https://git.easimer.net/easimer/pomodoro.git";
+    #   inputs.nixpkgs.follows = "nixpkgs-26-05";
+    # };
   };
 
   outputs =

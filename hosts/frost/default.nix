@@ -120,6 +120,7 @@
         compressStep = false;
       })
       freecad
+      prusa-slicer
       orca-slicer
 
       teams-for-linux

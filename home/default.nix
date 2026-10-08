@@ -37,7 +37,6 @@
       gitui
       nginx
       mkcert
-      inputs.pomodoro.packages.${stdenv.hostPlatform.system}.app
       docker
       tio
       file
