@@ -194,6 +194,7 @@
 
     gimp
     darktable
+    audacity
   ];
 
   services.udev.packages = with pkgs; [
@@ -304,6 +305,12 @@
         ];
       };
     };
+
+    extraCommands = ''
+      iptables -I INPUT -m pkttype --pkt-type multicast -j ACCEPT
+      iptables -A INPUT -m pkttype --pkt-type multicast -j ACCEPT
+      iptables -I INPUT -p udp -m udp --match multiport --dports 1990,2021 -j ACCEPT
+    '';
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
