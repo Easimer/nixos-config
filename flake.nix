@@ -84,6 +84,13 @@
             add-home-26-05
           ];
         };
+        hp = nixpkgs-26-05.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/hp
+            add-home-26-05
+          ];
+        };
       };
       homeConfigurations = {
         home = home-manager.lib.homeManagerConfiguration {
