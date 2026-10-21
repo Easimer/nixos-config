@@ -14,7 +14,12 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.limine = {
+    enable = true;
+    secureBoot = {
+      enable = true;
+    };
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
@@ -170,6 +175,7 @@
     gf
     valgrind
     picotool
+    sbctl
 
     kdePackages.kate
     kdePackages.kclock
