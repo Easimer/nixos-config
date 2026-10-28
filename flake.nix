@@ -91,6 +91,13 @@
             add-home-26-05
           ];
         };
+        zen = nixpkgs-26-05.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/zen
+            add-home-26-05
+          ];
+        };
       };
       homeConfigurations = {
         home = home-manager.lib.homeManagerConfiguration {
