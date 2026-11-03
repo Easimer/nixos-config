@@ -21,6 +21,11 @@
     "usb_storage"
     "sd_mod"
     "rtsx_pci_sdmmc"
+    "nvidia"
+    "nvidia_drm"
+    "nvidia_modeset"
+    "xe"
+    "i915"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
@@ -44,7 +49,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F26E-E496";
+    device = "/dev/disk/by-uuid/3FF2-35D3";
     fsType = "vfat";
     options = [
       "fmask=0077"

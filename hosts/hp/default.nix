@@ -20,6 +20,12 @@
       enable = true;
     };
 
+    partitionIndex = 8;
+
+    extraConfig = ''
+      graphics: no
+    '';
+
     extraEntries = ''
       /Windows
           protocol: efi
