@@ -130,6 +130,9 @@
       renderdoc
 
       hunspellDicts.hu_HU
+
+      android-studio-full
+      android-tools
     ];
   };
 
@@ -163,6 +166,8 @@
   nixpkgs.config.allowUnfree = true;
   # Accept the license of J-Link
   nixpkgs.config.segger-jlink.acceptLicense = true;
+  # Accept the Android SDK license
+  nixpkgs.config.android_sdk.accept_license = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
